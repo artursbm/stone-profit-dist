@@ -1,0 +1,3 @@
+ProfitDistribution/ProfitDistribution/bin/Debug/**/*
+ProfitDistribution/ProfitDistribution/obj/**/*
+**/*.DS_Store

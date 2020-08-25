@@ -1,0 +1,106 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Profit Distribution",
+    "description": "A service to calculate a company's profit ditribution to its employees.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/profit": {
+      "get": {
+        "tags": [
+          "Profit"
+        ],
+        "description": "Gets the profit distribution",
+        "operationId": "calculateProfitGet",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "availableAmount",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Summary"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Summary": {
+        "type": "object",
+        "properties": {
+          "distributions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmployeeDistribution"
+            }
+          },
+          "totalEmployees": {
+            "type": "string"
+          },
+          "distributedAmount": {
+            "type": "string"
+          },
+          "availableAmount": {
+            "type": "string"
+          },
+          "distributionAmountBalance": {
+            "type": "string"
+          }
+        }
+      },
+      "EmployeeDistribution": {
+        "type": "object",
+        "properties": {
+          "registrationId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "distributionAmount": {
+            "type": "string"
+          }
+        }
+      },
+      "Employee": {
+        "type": "object",
+        "properties": {
+          "registrationId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "area": {
+            "type": "string"
+          },
+          "position": {
+            "type": "string"
+          },
+          "salary": {
+            "type": "string"
+          },
+          "admissionDate": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    }
+  }
+}
