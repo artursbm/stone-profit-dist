@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using ProfitDistribution.Services.Business;
+using ProfitDistribution.Services.Database;
 
 namespace ProfitDistribution
 {
@@ -26,6 +21,10 @@ namespace ProfitDistribution
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            // AddSingleton will create only one instance of the dependency, in its first use, always reusing it when needed.
+            services.AddSingleton<IDatabaseEmployees, DatabaseEmployees>();
+            // other ways to add classes for DI are -> AddTransient, AddScoped.
+            services.AddTransient<IProfitService, ProfitService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
