@@ -6,7 +6,6 @@ namespace ProfitDistribution.Models
 
     public class Employee
     {
-        private const string S = "yyyy-MM-dd";
 
         [JsonProperty("matricula")]
         public string RegistrationId { get; set; }

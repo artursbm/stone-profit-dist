@@ -12,3 +12,10 @@ A base de funcionários da empresa, na qual o projeto se baseia para calcular os
 
 ## Como fazer build e deploy da aplicação
 `TODO`
+
+# TODOs
+- [ ] Create logic to map values to weights on profit calculation
+- [ ] Handle errors on Web API;
+- [ ] Unit Tests;
+- [ ] Deploy service to container
+- [ ] Create front client (react?) to consume API

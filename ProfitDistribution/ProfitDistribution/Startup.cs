@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProfitDistribution.Services.Business;
 using ProfitDistribution.Services.Database;
+using ProfitDistribution.Utils;
 
 namespace ProfitDistribution
 {
@@ -20,11 +21,14 @@ namespace ProfitDistribution
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // this method (ConfigureServices) will manage IOC for .NET Core apps.
+            // It is a container for all "services" that the app might inject in its classes.
             services.AddControllers();
             // AddSingleton will create only one instance of the dependency, in its first use, always reusing it when needed.
             services.AddSingleton<IDatabaseEmployees, DatabaseEmployees>();
             // other ways to add classes for DI are -> AddTransient, AddScoped.
             services.AddTransient<IProfitService, ProfitService>();
+            services.AddScoped<ObjectMappers>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +49,9 @@ namespace ProfitDistribution
             {
                 endpoints.MapControllers();
             });
+
+            app.UseStatusCodePages("text/plain", "Error on loading page. Status code: {0}");
+
         }
     }
 }

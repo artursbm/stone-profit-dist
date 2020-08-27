@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProfitDistribution.Models;
 using ProfitDistribution.Services.Business;
@@ -7,7 +8,7 @@ namespace ProfitDistribution.Controllers
 {
 
     [ApiController]
-    [Route("api")]
+    [Route("api/profit-dist")]
     public class ProfitController : ControllerBase
     {
 
@@ -22,13 +23,14 @@ namespace ProfitDistribution.Controllers
         }
 
 
-        //[HttpGet]
-        //[Route("profit")]
-        //public async Task<ActionResult<Summary>> calculateProfitGet()
-        //{
-        //    var summary = await this.profitContext;
-        //    return summary;
-        //}
+        [HttpGet]
+        [Route("profit")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<Summary> CalculateProfitGet([FromQuery] decimal totalAmount)
+        {
+            return profitService.GetSummaryForProfitDistribution(totalAmount);
+        }
 
         [HttpGet]
         [Route("employees")]
