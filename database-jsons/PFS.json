@@ -1,0 +1,22 @@
+[
+    {
+        "peso": 1,
+        "minSalarios": 0,
+        "maxSalarios": 3
+    },
+    {
+        "peso": 2,
+        "minSalarios": 3,
+        "maxSalarios": 5
+    },
+    {
+        "peso": 3,
+        "minSalarios": 5,
+        "maxSalarios": 8
+    },
+    {
+        "peso": 5,
+        "minSalarios": 8,
+        "maxSalarios": null
+    }
+]
