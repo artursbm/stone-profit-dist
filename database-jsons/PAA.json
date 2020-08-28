@@ -1,0 +1,26 @@
+[
+    {
+        "area": "Diretoria",
+        "peso": 1
+    },
+    {
+        "area": "Contabilidade",
+        "peso": 2
+    },
+    {
+        "area": "Financeiro",
+        "peso": 2
+    },
+    {
+        "area": "Tecnologia",
+        "peso": 2
+    },
+    {
+        "area": "Serviços Gerais",
+        "peso": 3
+    },
+    {
+        "area": "Relacionamento com o Cliente",
+        "peso": 6
+    }
+]

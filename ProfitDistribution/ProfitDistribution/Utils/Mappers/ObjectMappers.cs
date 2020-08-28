@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using ProfitDistribution.Models;
 
-namespace ProfitDistribution.Utils
+namespace ProfitDistribution.Utils.Mappers
 {
-    public class ObjectMappers
+    public class ObjectMappers : IObjectMappers
     {
         public ObjectMappers()
         {
@@ -19,6 +19,16 @@ namespace ProfitDistribution.Utils
                 DistributedAmount = MoneyUtils.SetMoneyTextFromDecimal(totalDistributed),
                 DistributionAmountBalance = MoneyUtils.SetMoneyTextFromDecimal(distributionAmountBalance),
                 AvailableAmount = MoneyUtils.SetMoneyTextFromDecimal(totalAmount)
+            };
+        }
+
+        public EmployeeDistribution MapEmployeeToEmployeeDistribution(Employee employee, decimal distributionAmount)
+        {
+            return new EmployeeDistribution
+            {
+                RegistrationId = employee.RegistrationId,
+                Name = employee.Name,
+                DistributionAmount = MoneyUtils.SetMoneyTextFromDecimal(distributionAmount)
             };
         }
 

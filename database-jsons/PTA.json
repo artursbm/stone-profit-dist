@@ -1,0 +1,22 @@
+[
+    {
+        "peso": 1,
+        "minAnos": 0,
+        "maxAnos": 1
+    },
+    {
+        "peso": 2,
+        "minAnos": 1,
+        "maxAnos": 3
+    },
+    {
+        "peso": 3,
+        "minAnos": 3,
+        "maxAnos": 8
+    },
+    {
+        "peso": 5,
+        "minAnos": 8,
+        "maxAnos": null
+    }
+]

@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProfitDistribution.Repositories;
+using ProfitDistribution.Services.Application;
 using ProfitDistribution.Services.Business;
-using ProfitDistribution.Services.Database;
-using ProfitDistribution.Utils;
+using ProfitDistribution.Utils.Mappers;
 
 namespace ProfitDistribution
 {
@@ -26,9 +27,11 @@ namespace ProfitDistribution
             services.AddControllers();
             // AddSingleton will create only one instance of the dependency, in its first use, always reusing it when needed.
             services.AddSingleton<IDatabaseEmployees, DatabaseEmployees>();
+            services.AddSingleton<IDatabaseWeights, DatabaseWeights>();
+            services.AddSingleton<IObjectMappers, ObjectMappers>();
             // other ways to add classes for DI are -> AddTransient, AddScoped.
             services.AddTransient<IProfitService, ProfitService>();
-            services.AddScoped<ObjectMappers>();
+            services.AddTransient<IProfitCalculations, ProfitCalculations>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,7 +39,10 @@ namespace ProfitDistribution
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/error-local-development");
+            } else
+            {
+                app.UseExceptionHandler("/error");
             }
 
             app.UseHttpsRedirection();

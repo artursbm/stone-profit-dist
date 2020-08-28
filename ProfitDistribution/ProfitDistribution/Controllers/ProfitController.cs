@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProfitDistribution.Models;
-using ProfitDistribution.Services.Business;
+using ProfitDistribution.Services.Application;
 
 namespace ProfitDistribution.Controllers
 {
@@ -27,7 +27,7 @@ namespace ProfitDistribution.Controllers
         [Route("profit")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<Summary> CalculateProfitGet([FromQuery] decimal totalAmount)
+        public ActionResult CalculateProfitGet([FromQuery] decimal totalAmount)
         {
             return profitService.GetSummaryForProfitDistribution(totalAmount);
         }
