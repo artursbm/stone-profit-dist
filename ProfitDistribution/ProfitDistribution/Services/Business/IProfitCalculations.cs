@@ -4,8 +4,8 @@ using ProfitDistribution.Models;
 
 namespace ProfitDistribution.Services.Business
 {
-    public interface IProfitService
+    public interface IProfitCalculations
     {
-        List<Employee> GetEmployees();
+        List<EmployeeDistribution> DistributeProfitForEmployees(List<Employee> employees);
     }
 }
