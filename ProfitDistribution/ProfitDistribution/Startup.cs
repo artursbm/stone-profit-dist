@@ -26,14 +26,14 @@ namespace ProfitDistribution
             // It is a container for all "services" that the app might inject in its classes.
             services.AddControllers();
             // AddSingleton will create only one instance of the dependency, in its first use, always reusing it when needed.
-            services.AddSingleton<IDatabaseEmployees, DatabaseEmployees>();
-            services.AddSingleton<IDatabaseWeights, DatabaseWeights>();
+            services.AddScoped<IDatabaseEmployees, DatabaseEmployees>();
+            services.AddScoped<IDatabaseWeights, DatabaseWeights>();
             services.AddSingleton<IObjectMappers, ObjectMappers>();
             // other ways to add classes for DI are -> AddTransient, AddScoped.
             services.AddTransient<IProfitService, ProfitService>();
             services.AddTransient<IProfitCalculations, ProfitCalculations>();
         }
-
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
