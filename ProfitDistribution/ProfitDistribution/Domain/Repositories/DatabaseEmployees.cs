@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -12,12 +13,9 @@ namespace ProfitDistribution.Domain.Repositories
 
         private const string ENDPOINT_EMPLOYEES = "/employees.json";
 
-        IList<Employee> IDatabaseEmployees.FetchAllEmployees()
-        {
-            return FetchListOfEmployeesAsync().Result;
-        }
+       
 
-        private async Task<IList<Employee>> FetchListOfEmployeesAsync()
+        public async Task<List<Employee>> FetchAllEmployeesAsync()
         {
             IList<Employee> employees = new List<Employee>();
             var httpClient = new HttpClient();
@@ -26,7 +24,7 @@ namespace ProfitDistribution.Domain.Repositories
                 string emps = await response.Content.ReadAsStringAsync();
                 employees = JsonConvert.DeserializeObject<List<Employee>>(emps);
             }
-            return employees;
+            return employees.ToList();
 
         }
 

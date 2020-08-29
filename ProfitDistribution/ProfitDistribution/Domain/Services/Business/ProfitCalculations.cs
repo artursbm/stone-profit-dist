@@ -61,10 +61,10 @@ namespace ProfitDistribution.Domain.Services.Business
             else
             {
                 decimal weight = 0;
+                decimal salaryRatio = decimal.ToInt16(decimal.Ceiling(salary / AppConstants.MINIMUM_WAGE));
                 pfsList.ForEach(pfs =>
                 {
-                    if (pfs.MinSalaries * AppConstants.MINIMUM_WAGE < salary &&
-                        salary <= (pfs.MaxSalaries ?? int.MaxValue / AppConstants.MINIMUM_WAGE) * AppConstants.MINIMUM_WAGE)
+                    if (pfs.MinSalaries < salaryRatio && salaryRatio <= (pfs.MaxSalaries ?? int.MaxValue))
                     {
                         weight = pfs.Weight;
                         return;
@@ -77,10 +77,10 @@ namespace ProfitDistribution.Domain.Services.Business
         private decimal GetPTA(DateTime admissionDate, List<PTAModel> ptaList)
         {
             int yearsInCompany = GetYearsInCompany(admissionDate);
-            decimal weight = 0;
+            decimal weight = 1;
             ptaList.ForEach(pta =>
             {
-                if (pta.MinYears < yearsInCompany && yearsInCompany <= (pta.MaxYears ?? int.MaxValue))
+                if (pta.MinYears <= yearsInCompany && yearsInCompany < (pta.MaxYears ?? int.MaxValue))
                 {
                     weight = pta.Weight;
                     return;

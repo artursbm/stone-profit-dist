@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProfitDistribution.Domain.Mappers;
 using ProfitDistribution.Domain.Models;
@@ -11,6 +12,7 @@ namespace ProfitDistribution.Domain.Services.Application
 {
     public class ProfitService : IProfitService
     {
+        private const string ERROR_BALANCE = "Saldo insuficiente para distribuição";
         private readonly IDatabaseEmployees databaseEmployees;
         private readonly IProfitCalculations profitCalculations;
         private readonly IObjectMappers objectMappers;
@@ -23,38 +25,24 @@ namespace ProfitDistribution.Domain.Services.Application
             profitCalculations = profitCalcs;
         }
 
-        public ActionResult GetSummaryForProfitDistribution(decimal totalAmount)
+        public async Task<ActionResult<Summary>> GetSummaryForProfitDistributionAsync(decimal totalAmount)
         {
-            List<Employee> employees = GetAllEmployees();
-            List<EmployeeDistribution> employeeDistributions = profitCalculations.DistributeProfitForEmployees(employees);
-
+            var employees = await GetEmployeesAsync();
+            List<EmployeeDistribution> employeeDistributions = profitCalculations.DistributeProfitForEmployees(employees.ToList());
             decimal totalDistributed = employeeDistributions.Sum(emp => MoneyUtils.SetDecimalFromString(emp.DistributionAmount));
             decimal distributionAmountBalance = decimal.Subtract(totalAmount, totalDistributed);
 
             if (IsNegative(distributionAmountBalance))
             {
-                return new BadRequestResult();
+                return new BadRequestObjectResult(ERROR_BALANCE);
             }
 
-            return new OkObjectResult(objectMappers.MapResultToSummary(employeeDistributions, employees.Count.ToString(), totalAmount, totalDistributed, distributionAmountBalance));
+            return objectMappers.MapResultToSummary(employeeDistributions, employees.Count.ToString(), totalAmount, totalDistributed, distributionAmountBalance);
         }
 
-        public ActionResult GetEmployees()
+        public async Task<List<Employee>> GetEmployeesAsync()
         {
-            try
-            {
-                return new OkObjectResult(GetAllEmployees());
-            }
-            catch
-            {
-                return new BadRequestResult();
-            }
-
-        }
-
-        private List<Employee> GetAllEmployees()
-        {
-            return new List<Employee>(databaseEmployees.FetchAllEmployees());
+            return await databaseEmployees.FetchAllEmployeesAsync();
         }
 
         private bool IsNegative(decimal distributionAmountBalance)
