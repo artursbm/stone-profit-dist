@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using ProfitDistribution.Models.Profit;
+using ProfitDistribution.Domain.Models.Profit;
 
-namespace ProfitDistribution.Repositories
+namespace ProfitDistribution.Domain.Repositories
 {
     public interface IDatabaseWeights
     {

@@ -1,7 +1,7 @@
 
 using Newtonsoft.Json;
 
-namespace ProfitDistribution.Models
+namespace ProfitDistribution.Domain.Models
 {
 
     public partial class EmployeeDistribution

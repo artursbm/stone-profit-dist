@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using ProfitDistribution.Models;
-using ProfitDistribution.Models.Profit;
-using ProfitDistribution.Repositories;
+using ProfitDistribution.Domain.Mappers;
+using ProfitDistribution.Domain.Models;
+using ProfitDistribution.Domain.Models.Profit;
+using ProfitDistribution.Domain.Repositories;
 using ProfitDistribution.Utils;
-using ProfitDistribution.Utils.Mappers;
 
-namespace ProfitDistribution.Services.Business
+namespace ProfitDistribution.Domain.Services.Business
 {
     public class ProfitCalculations : IProfitCalculations
     {
@@ -91,9 +91,12 @@ namespace ProfitDistribution.Services.Business
 
         private int GetYearsInCompany(DateTime admissionDate)
         {
-            return (DateTime.Today.Year - admissionDate.Year - 1) +
-                (((DateTime.Today.Month > admissionDate.Month) ||
-                ((DateTime.Today.Month == admissionDate.Month) && (DateTime.Today.Day >= admissionDate.Day))) ? 1 : 0);
+            int yearsInCompany = DateTime.Today.Year - admissionDate.Year;
+            if (admissionDate > DateTime.Today.AddYears(-yearsInCompany))
+            {
+                yearsInCompany--;
+            }
+            return yearsInCompany;
 
         }
     }

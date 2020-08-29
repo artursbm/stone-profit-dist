@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using ProfitDistribution.Models;
+﻿using System.Collections.Generic;
+using ProfitDistribution.Domain.Models;
 
-namespace ProfitDistribution.Services.Business
+namespace ProfitDistribution.Domain.Services.Business
 {
     public interface IProfitCalculations
     {

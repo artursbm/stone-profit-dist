@@ -2,10 +2,10 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using ProfitDistribution.Models.Profit;
+using ProfitDistribution.Domain.Models.Profit;
 using ProfitDistribution.Utils;
 
-namespace ProfitDistribution.Repositories
+namespace ProfitDistribution.Domain.Repositories
 {
     public class DatabaseWeights : IDatabaseWeights
     {

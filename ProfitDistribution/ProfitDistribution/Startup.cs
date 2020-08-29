@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProfitDistribution.Repositories;
-using ProfitDistribution.Services.Application;
-using ProfitDistribution.Services.Business;
-using ProfitDistribution.Utils.Mappers;
+using ProfitDistribution.Domain.Mappers;
+using ProfitDistribution.Domain.Repositories;
+using ProfitDistribution.Domain.Services.Application;
+using ProfitDistribution.Domain.Services.Business;
 
 namespace ProfitDistribution
 {
@@ -39,8 +39,9 @@ namespace ProfitDistribution
         {
             if (env.IsDevelopment())
             {
-                app.UseExceptionHandler("/error-local-development");
-            } else
+                app.UseExceptionHandler("/error-local-development");
+            }
+            else
             {
                 app.UseExceptionHandler("/error");
             }

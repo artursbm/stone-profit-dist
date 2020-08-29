@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProfitDistribution.Models;
-using ProfitDistribution.Services.Application;
+using ProfitDistribution.Domain.Services.Application;
 
 namespace ProfitDistribution.Controllers
 {
@@ -34,7 +32,7 @@ namespace ProfitDistribution.Controllers
 
         [HttpGet]
         [Route("employees")]
-        public ActionResult<List<Employee>> GetEmployeeList()
+        public ActionResult GetEmployeeList()
         {
             return Ok(profitService.GetEmployees());
         }

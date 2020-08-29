@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using ProfitDistribution.Models;
+using ProfitDistribution.Domain.Models;
 
-namespace ProfitDistribution.Repositories
+namespace ProfitDistribution.Domain.Repositories
 {
     // This interface could be implemented for firebase or Redis Cloud or other database provider.
     public interface IDatabaseEmployees

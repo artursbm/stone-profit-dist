@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace ProfitDistribution.Models.Profit
+namespace ProfitDistribution.Domain.Models.Profit
 {
     public class PAAModel
     {

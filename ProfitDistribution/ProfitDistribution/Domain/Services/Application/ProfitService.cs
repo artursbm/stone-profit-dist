@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using ProfitDistribution.Models;
-using ProfitDistribution.Repositories;
-using ProfitDistribution.Services.Business;
+using ProfitDistribution.Domain.Mappers;
+using ProfitDistribution.Domain.Models;
+using ProfitDistribution.Domain.Repositories;
+using ProfitDistribution.Domain.Services.Business;
 using ProfitDistribution.Utils;
-using ProfitDistribution.Utils.Mappers;
 
-namespace ProfitDistribution.Services.Application
+namespace ProfitDistribution.Domain.Services.Application
 {
     public class ProfitService : IProfitService
     {

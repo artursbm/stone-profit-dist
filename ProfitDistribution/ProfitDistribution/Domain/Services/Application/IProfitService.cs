@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ProfitDistribution.Services.Application
+namespace ProfitDistribution.Domain.Services.Application
 {
     public interface IProfitService
     {

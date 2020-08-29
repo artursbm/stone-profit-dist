@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using ProfitDistribution.Models;
+using ProfitDistribution.Domain.Models;
 using ProfitDistribution.Utils;
 
-namespace ProfitDistribution.Repositories
+namespace ProfitDistribution.Domain.Repositories
 {
     public class DatabaseEmployees : IDatabaseEmployees
     {

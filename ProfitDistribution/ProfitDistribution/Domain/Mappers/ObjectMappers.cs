@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using ProfitDistribution.Models;
+﻿using System.Collections.Generic;
+using ProfitDistribution.Domain.Models;
+using ProfitDistribution.Utils;
 
-namespace ProfitDistribution.Utils.Mappers
+namespace ProfitDistribution.Domain.Mappers
 {
     public class ObjectMappers : IObjectMappers
     {

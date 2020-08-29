@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using ProfitDistribution.Models;
+using ProfitDistribution.Domain.Models;
 
-namespace ProfitDistribution.Utils.Mappers
+namespace ProfitDistribution.Domain.Mappers
 {
     public interface IObjectMappers
     {
