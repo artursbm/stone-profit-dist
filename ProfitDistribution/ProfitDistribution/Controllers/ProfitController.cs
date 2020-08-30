@@ -26,12 +26,13 @@ namespace ProfitDistribution.Controllers
 
 
         [HttpGet]
-        [Route("profit")]
+        [Route("employees/profit")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Summary>> CalculateProfitGetAsync([FromQuery] decimal totalAmount)
         {
             return await profitService.GetSummaryForProfitDistributionAsync(totalAmount);
+
         }
 
         [HttpGet]

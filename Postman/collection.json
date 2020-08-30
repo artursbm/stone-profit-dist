@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "732a27cf-95e2-4ede-b05c-94eb9de7d827",
+		"name": "ProfitDistribution",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Distribuição de lucros",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/profit-dist/employees/profit?totalAmount=5000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"profit-dist",
+						"employees",
+						"profit"
+					],
+					"query": [
+						{
+							"key": "totalAmount",
+							"value": "5000000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recupera lista de funcionários",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/profit-dist/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"profit-dist",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

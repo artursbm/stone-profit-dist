@@ -32,6 +32,21 @@ namespace ProfitDistribution
             // other ways to add classes for DI are -> AddTransient, AddScoped.
             services.AddTransient<IProfitService, ProfitService>();
             services.AddTransient<IProfitCalculations, ProfitCalculations>();
+
+            services.AddSwaggerDocument(config => {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "1.0.0";
+                    document.Info.Title = "Profit Distribution API";
+                    document.Info.Description = "API that distributes profit for all employees in a company";
+                    document.Info.Contact = new NSwag.OpenApiContact
+                    {
+                        Name = "Artur Mello",
+                        Email = "artursbmello@gmail.com",
+                        Url = "https://github.com/artursbm"
+                    };
+                };
+            });
         }
         
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +73,9 @@ namespace ProfitDistribution
             });
 
             app.UseStatusCodePages("text/plain", "Error on loading page. Status code: {0}");
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
         }
     }

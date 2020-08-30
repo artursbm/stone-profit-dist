@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  profitdistribution:
+    image: ${DOCKER_REGISTRY-}profitdistribution
+    build:
+      context: .
+      dockerfile: ProfitDistribution/Dockerfile
+    ports:
+      - "8080:80"
