@@ -6,17 +6,17 @@
     },
     {
         "peso": 2,
-        "minAnos": 1,
+        "minAnos": 2,
         "maxAnos": 3
     },
     {
         "peso": 3,
-        "minAnos": 3,
+        "minAnos": 4,
         "maxAnos": 8
     },
     {
         "peso": 5,
-        "minAnos": 8,
+        "minAnos": 9,
         "maxAnos": null
     }
 ]
