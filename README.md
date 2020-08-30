@@ -22,9 +22,9 @@ cd ./ProfitDistribution
 docker-compose up -d
 ```
 ```sh
-# Depois de a aplicação iniciar, para fazer um teste usando cURL, basta digitar:
+# Depois de a aplicação iniciar, para fazer um teste usando cURL, basta digitar, por exemplo:
 
-curl 'http://localhost:8080/api/profit-dist/employees/profit' 
+curl 'http://localhost:8080/api/profit-dist/employees/profit?totalAmount=500000' 
 
 ```
 ## Teste pelo Postman
