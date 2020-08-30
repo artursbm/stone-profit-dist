@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using ProfitDistribution.Domain.Models;
 
 namespace ProfitDistribution.Domain.Services.Application
 {
     public interface IProfitService
     {
-        ActionResult GetSummaryForProfitDistribution(decimal totalAmount);
+        Task<ActionResult<Summary>> GetSummaryForProfitDistributionAsync(decimal totalAmount);
 
-        ActionResult GetEmployees();
+        Task<List<Employee>> GetEmployeesAsync();
     }
 }

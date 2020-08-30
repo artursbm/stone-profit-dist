@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProfitDistribution.Domain.Models;
 using ProfitDistribution.Domain.Services.Application;
 
 namespace ProfitDistribution.Controllers
@@ -25,16 +29,18 @@ namespace ProfitDistribution.Controllers
         [Route("profit")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult CalculateProfitGet([FromQuery] decimal totalAmount)
+        public async Task<ActionResult<Summary>> CalculateProfitGetAsync([FromQuery] decimal totalAmount)
         {
-            return profitService.GetSummaryForProfitDistribution(totalAmount);
+            return await profitService.GetSummaryForProfitDistributionAsync(totalAmount);
         }
 
         [HttpGet]
         [Route("employees")]
-        public ActionResult GetEmployeeList()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<List<Employee>> GetEmployeeListAsync()
         {
-            return Ok(profitService.GetEmployees());
+            return await profitService.GetEmployeesAsync();
         }
 
     }

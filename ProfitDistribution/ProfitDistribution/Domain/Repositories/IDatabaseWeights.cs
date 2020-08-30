@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using ProfitDistribution.Domain.Models.Profit;
 
 namespace ProfitDistribution.Domain.Repositories
@@ -6,10 +7,10 @@ namespace ProfitDistribution.Domain.Repositories
     public interface IDatabaseWeights
     {
 
-        decimal FetchPAAByArea(string area);
+        Task<List<PFSModel>> FetchAllPFSAsync();
 
-        List<PFSModel> FetchAllPFS();
+        Task<List<PTAModel>> FetchAllPTAAsync();
 
-        List<PTAModel> FetchAllPTA();
+        Task<List<PAAModel>> FetchAllPAAAsync();
     }
 }
