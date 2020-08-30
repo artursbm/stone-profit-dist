@@ -14,31 +14,7 @@ namespace ProfitDistribution.Domain.Repositories
         private const string ENDPOINT_PFS = "/pfs.json";
         private readonly HttpClient httpClient = new HttpClient();
 
-        public decimal FetchPAAByArea(string area)
-        {
-            return FetchPAAByAreaAsync(area).Result;
-        }
-
-        public List<PTAModel> FetchAllPTA()
-        {
-            return FetchAllPTAAsync().Result;
-        }
-
-        public List<PFSModel> FetchAllPFS()
-        {
-            return FetchAllPFSAsync().Result;
-        }
-
-        private async Task<decimal> FetchPAAByAreaAsync(string area)
-        {
-            string queryByArea = $"?orderBy=\"area\"&equalTo={area}";
-            using HttpResponseMessage response = await httpClient.GetAsync(GetFirebaseEndpoint(ENDPOINT_PAA, queryByArea));
-            string paa = await response.Content.ReadAsStringAsync();
-            PAAModel paaModel = JsonConvert.DeserializeObject<PAAModel>(paa);
-            return paaModel.Weight;
-        }
-
-        private async Task<List<PTAModel>> FetchAllPTAAsync()
+        public async Task<List<PTAModel>> FetchAllPTAAsync()
         {
             using HttpResponseMessage response = await httpClient.GetAsync(GetFirebaseEndpoint(ENDPOINT_PTA, null));
             string pta = await response.Content.ReadAsStringAsync();
@@ -46,14 +22,20 @@ namespace ProfitDistribution.Domain.Repositories
 
         }
 
-
-        private async Task<List<PFSModel>> FetchAllPFSAsync()
+        public async Task<List<PFSModel>> FetchAllPFSAsync()
         {
             using HttpResponseMessage response = await httpClient.GetAsync(GetFirebaseEndpoint(ENDPOINT_PFS, null));
             string pfs = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<List<PFSModel>>(pfs);
         }
 
+        public async Task<List<PAAModel>> FetchAllPAAAsync()
+        {
+            using HttpResponseMessage response = await httpClient.GetAsync(GetFirebaseEndpoint(ENDPOINT_PAA, null));
+            string paa = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<PAAModel>>(paa);
+
+        }
 
         private string GetFirebaseEndpoint(string endpoint, string query)
         {
@@ -63,7 +45,5 @@ namespace ProfitDistribution.Domain.Repositories
             }
             return AppConstants.BASE_URL_DB_FIREBASE + endpoint + query;
         }
-
-
     }
 }

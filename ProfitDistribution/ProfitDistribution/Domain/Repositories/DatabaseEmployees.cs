@@ -13,11 +13,11 @@ namespace ProfitDistribution.Domain.Repositories
 
         private const string ENDPOINT_EMPLOYEES = "/employees.json";
 
-       
+
 
         public async Task<List<Employee>> FetchAllEmployeesAsync()
         {
-            IList<Employee> employees = new List<Employee>();
+            List<Employee> employees = new List<Employee>();
             var httpClient = new HttpClient();
             using (HttpResponseMessage response = await httpClient.GetAsync(AppConstants.BASE_URL_DB_FIREBASE + ENDPOINT_EMPLOYEES))
             {

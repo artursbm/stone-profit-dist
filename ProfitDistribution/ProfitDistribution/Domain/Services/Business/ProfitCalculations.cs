@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using ProfitDistribution.Domain.Mappers;
 using ProfitDistribution.Domain.Models;
 using ProfitDistribution.Domain.Models.Profit;
@@ -19,37 +21,39 @@ namespace ProfitDistribution.Domain.Services.Business
             objectMappers = mappers;
         }
 
-        public List<EmployeeDistribution> DistributeProfitForEmployees(List<Employee> employees)
+        public async Task<List<EmployeeDistribution>> DistributeProfitForEmployeesAsync(List<Employee> employees)
         {
             List<EmployeeDistribution> employeeDistributions = new List<EmployeeDistribution>();
 
-            List<PFSModel> pfsList = databaseWeights.FetchAllPFS();
-            List<PTAModel> ptaList = databaseWeights.FetchAllPTA();
+            List<PFSModel> pfsList = await databaseWeights.FetchAllPFSAsync();
+            List<PTAModel> ptaList = await databaseWeights.FetchAllPTAAsync();
+            List<PAAModel> paaList = await databaseWeights.FetchAllPAAAsync();
+            Dictionary<string, decimal> paaDict = paaList.ToDictionary(x => x.Area, x => x.Weight);
 
-            employees.ForEach(employee => employeeDistributions.Add(objectMappers.MapEmployeeToEmployeeDistribution(employee, CalculateProfitDistributionForEmployee(employee, pfsList, ptaList))));
+            employees.ForEach(employee => employeeDistributions.Add(objectMappers.MapEmployeeToEmployeeDistribution(employee, CalculateProfitDistributionForEmployee(employee, pfsList, ptaList, paaDict))));
 
             return employeeDistributions;
         }
 
-        private decimal CalculateProfitDistributionForEmployee(Employee employee, List<PFSModel> pfsList, List<PTAModel> ptaList)
+        private decimal CalculateProfitDistributionForEmployee(Employee employee, List<PFSModel> pfsList, List<PTAModel> ptaList, Dictionary<string, decimal> paaDict)
         {
             decimal salary = MoneyUtils.SetDecimalFromString(employee.Salary);
             DateTime admissionDate = employee.AdmissionDate;
             string area = employee.Area;
             string position = employee.Position;
 
-            return salary * AppConstants.MONTHS_IN_YEAR * GetEquationResult(salary, admissionDate, area, position, pfsList, ptaList);
+            return salary * AppConstants.MONTHS_IN_YEAR * GetEquationResult(salary, admissionDate, area, position, pfsList, ptaList, paaDict);
 
         }
 
-        public decimal GetEquationResult(decimal salary, DateTime admissionDate, string area, string position, List<PFSModel> pfsList, List<PTAModel> ptaList)
+        public decimal GetEquationResult(decimal salary, DateTime admissionDate, string area, string position, List<PFSModel> pfsList, List<PTAModel> ptaList, Dictionary<string, decimal> paaDict)
         {
-            return decimal.Divide(decimal.Add(GetPTA(admissionDate, ptaList), GetPAA(area)), GetPFS(salary, position, pfsList));
+            return decimal.Divide(decimal.Add(GetPTA(admissionDate, ptaList), GetPAA(area, paaDict)), GetPFS(salary, position, pfsList));
         }
 
-        private decimal GetPAA(string area)
+        private decimal GetPAA(string area, Dictionary<string, decimal> paaDict)
         {
-            return databaseWeights.FetchPAAByArea(area);
+            return paaDict.GetValueOrDefault(area);
         }
 
         private decimal GetPFS(decimal salary, string position, List<PFSModel> pfsList)
@@ -80,7 +84,7 @@ namespace ProfitDistribution.Domain.Services.Business
             decimal weight = 1;
             ptaList.ForEach(pta =>
             {
-                if (pta.MinYears <= yearsInCompany && yearsInCompany < (pta.MaxYears ?? int.MaxValue))
+                if (pta.MinYears <= yearsInCompany && yearsInCompany <= (pta.MaxYears ?? int.MaxValue))
                 {
                     weight = pta.Weight;
                     return;
@@ -95,6 +99,10 @@ namespace ProfitDistribution.Domain.Services.Business
             if (admissionDate > DateTime.Today.AddYears(-yearsInCompany))
             {
                 yearsInCompany--;
+            }
+            else if (admissionDate < DateTime.Today.AddYears(-yearsInCompany))
+            {
+                yearsInCompany++;
             }
             return yearsInCompany;
 

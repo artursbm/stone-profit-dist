@@ -28,7 +28,7 @@ namespace ProfitDistribution.Domain.Services.Application
         public async Task<ActionResult<Summary>> GetSummaryForProfitDistributionAsync(decimal totalAmount)
         {
             var employees = await GetEmployeesAsync();
-            List<EmployeeDistribution> employeeDistributions = profitCalculations.DistributeProfitForEmployees(employees.ToList());
+            List<EmployeeDistribution> employeeDistributions = await profitCalculations.DistributeProfitForEmployeesAsync(employees.ToList());
             decimal totalDistributed = employeeDistributions.Sum(emp => MoneyUtils.SetDecimalFromString(emp.DistributionAmount));
             decimal distributionAmountBalance = decimal.Subtract(totalAmount, totalDistributed);
 
