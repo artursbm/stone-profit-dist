@@ -1,4 +1,6 @@
 ProfitDistribution/ProfitDistribution/bin/Debug/**/*
 ProfitDistribution/ProfitDistribution/obj/**/*
+ProfitDistribution/ProfitDistribution.Tests/bin/Debug/**/*
+ProfitDistribution/ProfitDistribution.Tests/obj/**/*
 **/*.DS_Store
 **/*.vs/
