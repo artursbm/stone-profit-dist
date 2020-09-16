@@ -26,12 +26,12 @@ namespace ProfitDistribution
             // It is a container for all "services" that the app might inject in its classes.
             services.AddControllers();
             // AddSingleton will create only one instance of the dependency, in its first use, always reusing it when needed.
-            services.AddScoped<IDatabaseEmployees, DatabaseEmployees>();
-            services.AddScoped<IDatabaseWeights, DatabaseWeights>();
+            services.AddSingleton<IDatabaseEmployees, DatabaseEmployees>();
+            services.AddSingleton<IDatabaseWeights, DatabaseWeights>();
             services.AddSingleton<IObjectMappers, ObjectMappers>();
             // other ways to add classes for DI are -> AddTransient, AddScoped.
-            services.AddTransient<IProfitService, ProfitService>();
-            services.AddTransient<IProfitCalculations, ProfitCalculations>();
+            services.AddScoped<IProfitService, ProfitService>();
+            services.AddScoped<IProfitCalculations, ProfitCalculations>();
 
             services.AddSwaggerDocument(config => {
                 config.PostProcess = document =>
