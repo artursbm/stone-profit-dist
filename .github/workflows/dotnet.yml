@@ -20,7 +20,7 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore ProfitDistribution/ProfitDistribution/ProfitDistribution.csproj
+      run: dotnet restore ProfitDistribution/ProfitDistribution.sln
     - name: Build
       run: dotnet build --no-restore ProfitDistribution/ProfitDistribution.sln
     - name: Test
