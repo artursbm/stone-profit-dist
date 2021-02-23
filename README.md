@@ -1,3 +1,5 @@
+[![.NET Build](https://github.com/artursbm/stone-profit-dist/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/artursbm/stone-profit-dist/actions/workflows/dotnet.yml)
+
 # stone-profit-dist
 Desafio Stone - Distribuição de lucros
 
