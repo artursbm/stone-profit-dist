@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using ProfitDistribution.Domain.Models.Profit;
+﻿using ProfitDistribution.Domain.Models.Profit;
 
-namespace ProfitDistribution.Domain.Repositories
+namespace ProfitDistribution.Application.Repositories
 {
     public interface IDatabaseWeights
     {

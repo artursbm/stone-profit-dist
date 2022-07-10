@@ -1,7 +1,4 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-
-namespace ProfitDistribution
+namespace ProfitDistribution.Presentation
 {
     public class Program
     {

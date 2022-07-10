@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using ProfitDistribution.Domain.Models.Profit;
 using ProfitDistribution.Utils;
 
-namespace ProfitDistribution.Domain.Repositories
+namespace ProfitDistribution.Application.Repositories
 {
     public class DatabaseWeights : IDatabaseWeights
     {

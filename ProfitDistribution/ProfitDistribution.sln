@@ -1,9 +1,15 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfitDistribution", "src\ProfitDistribution\ProfitDistribution.csproj", "{7B0874FE-4E92-492E-B152-764880ABD6E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfitDistribution.Utils", "src\ProfitDistribution.Utils\ProfitDistribution.Utils.csproj", "{7B0874FE-4E92-492E-B152-764880ABD6E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfitDistribution.UnitTests", "test\ProfitDistribution.UnitTests\ProfitDistribution.UnitTests.csproj", "{E980CBF2-DA3F-4220-BC0D-4DC364EDA317}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfitDistribution.Presentation", "src\ProfitDistribution.Presentation\ProfitDistribution.Presentation.csproj", "{15DA7B55-A3DB-4523-B1C9-13F4742E007C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfitDistribution.Domain", "src\ProfitDistribution.Domain\ProfitDistribution.Domain.csproj", "{5BEC067C-B377-4331-82D0-4C92CBF6B775}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfitDistribution.Application", "src\ProfitDistribution.Application\ProfitDistribution.Application.csproj", "{E3EC241E-F9FC-4E54-ADDA-7D2E813431DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,5 +29,17 @@ Global
 		{5EC177B0-6F57-4EC8-8D0E-CEBEC2C480A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EC177B0-6F57-4EC8-8D0E-CEBEC2C480A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EC177B0-6F57-4EC8-8D0E-CEBEC2C480A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15DA7B55-A3DB-4523-B1C9-13F4742E007C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15DA7B55-A3DB-4523-B1C9-13F4742E007C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15DA7B55-A3DB-4523-B1C9-13F4742E007C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15DA7B55-A3DB-4523-B1C9-13F4742E007C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BEC067C-B377-4331-82D0-4C92CBF6B775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BEC067C-B377-4331-82D0-4C92CBF6B775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BEC067C-B377-4331-82D0-4C92CBF6B775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BEC067C-B377-4331-82D0-4C92CBF6B775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3EC241E-F9FC-4E54-ADDA-7D2E813431DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3EC241E-F9FC-4E54-ADDA-7D2E813431DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3EC241E-F9FC-4E54-ADDA-7D2E813431DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3EC241E-F9FC-4E54-ADDA-7D2E813431DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,14 +1,9 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using ProfitDistribution.Application.Repositories;
+using ProfitDistribution.Application.Services.Application;
+using ProfitDistribution.Application.Services.Business;
 using ProfitDistribution.Domain.Mappers;
-using ProfitDistribution.Domain.Repositories;
-using ProfitDistribution.Domain.Services.Application;
-using ProfitDistribution.Domain.Services.Business;
 
-namespace ProfitDistribution
+namespace ProfitDistribution.Presentation
 {
     public class Startup
     {
@@ -33,7 +28,8 @@ namespace ProfitDistribution
             services.AddScoped<IProfitService, ProfitService>();
             services.AddScoped<IProfitCalculations, ProfitCalculations>();
 
-            services.AddSwaggerDocument(config => {
+            services.AddSwaggerDocument(config =>
+            {
                 config.PostProcess = document =>
                 {
                     document.Info.Version = "1.0.0";
@@ -48,7 +44,7 @@ namespace ProfitDistribution
                 };
             });
         }
-        
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -67,16 +63,12 @@ namespace ProfitDistribution
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
             app.UseStatusCodePages("text/plain", "Error on loading page. Status code: {0}");
 
             app.UseOpenApi();
             app.UseSwaggerUi3();
-
         }
     }
 }

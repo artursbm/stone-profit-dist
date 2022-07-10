@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -17,12 +17,13 @@
 </PackageReference>
     <PackageReference Include="Moq" Version="4.14.5" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\ProfitDistribution\ProfitDistribution.csproj" />
-  </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
     <Folder Include="Domain\Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ProfitDistribution.Application\ProfitDistribution.Application.csproj" />
+    <ProjectReference Include="..\..\src\ProfitDistribution.Domain\ProfitDistribution.Domain.csproj" />
+    <ProjectReference Include="..\..\src\ProfitDistribution.Presentation\ProfitDistribution.Presentation.csproj" />
   </ItemGroup>
 </Project>

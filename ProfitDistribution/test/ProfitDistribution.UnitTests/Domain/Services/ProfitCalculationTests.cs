@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Moq;
+using ProfitDistribution.Application.Repositories;
+using ProfitDistribution.Application.Services.Business;
 using ProfitDistribution.Domain.Mappers;
 using ProfitDistribution.Domain.Models.Profit;
-using ProfitDistribution.Domain.Repositories;
-using ProfitDistribution.Domain.Services.Business;
 using Xunit;
 
-namespace ProfitDistribution.Tests.Domain.Services
+namespace ProfitDistribution.UnitTests.Domain.Services
 {
     public class ProfitCalculationTests
     {

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using ProfitDistribution.Domain.Models;
+﻿using ProfitDistribution.Domain.Models;
 using ProfitDistribution.Utils;
 
 namespace ProfitDistribution.Domain.Mappers

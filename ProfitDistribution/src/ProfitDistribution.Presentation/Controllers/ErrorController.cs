@@ -1,10 +1,7 @@
-﻿using System;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-
-namespace ProfitDistribution.Controllers
+namespace ProfitDistribution.Presentation.Controllers
 {
     [ApiController]
     public class ErrorController : ControllerBase

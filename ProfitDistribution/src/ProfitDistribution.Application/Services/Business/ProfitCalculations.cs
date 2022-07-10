@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ProfitDistribution.Application.Repositories;
 using ProfitDistribution.Domain.Mappers;
 using ProfitDistribution.Domain.Models;
 using ProfitDistribution.Domain.Models.Profit;
-using ProfitDistribution.Domain.Repositories;
 using ProfitDistribution.Utils;
 
-namespace ProfitDistribution.Domain.Services.Business
+namespace ProfitDistribution.Application.Services.Business
 {
+    public interface IProfitCalculations
+    {
+        Task<List<EmployeeDistribution>> DistributeProfitForEmployeesAsync(List<Employee> employees);
+
+    }
+    
     public class ProfitCalculations : IProfitCalculations
     {
         private readonly IDatabaseWeights databaseWeights;
