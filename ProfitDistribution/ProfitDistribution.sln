@@ -1,9 +1,9 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfitDistribution", "ProfitDistribution\ProfitDistribution.csproj", "{7B0874FE-4E92-492E-B152-764880ABD6E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfitDistribution", "src\ProfitDistribution\ProfitDistribution.csproj", "{7B0874FE-4E92-492E-B152-764880ABD6E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfitDistribution.Tests", "ProfitDistribution.Tests\ProfitDistribution.Tests.csproj", "{E980CBF2-DA3F-4220-BC0D-4DC364EDA317}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfitDistribution.UnitTests", "test\ProfitDistribution.UnitTests\ProfitDistribution.UnitTests.csproj", "{E980CBF2-DA3F-4220-BC0D-4DC364EDA317}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

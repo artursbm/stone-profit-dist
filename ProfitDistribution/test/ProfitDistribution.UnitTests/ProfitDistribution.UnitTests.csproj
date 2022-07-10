@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProfitDistribution\ProfitDistribution.csproj" />
+    <ProjectReference Include="..\..\src\ProfitDistribution\ProfitDistribution.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
